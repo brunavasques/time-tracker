@@ -1,0 +1,7 @@
+<h1>Create new timesheet</h1>
+
+<%= form_for(@timesheet) do |form| %>
+    <%= form.label :owner, raw('Your name:') %>
+    <%= form.text_field :owner %>
+    <%= form.submit "Create" %>
+<% end %>

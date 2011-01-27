@@ -33,4 +33,5 @@ group :development, :test do
   gem 'rspec-rails', "~> 2.0.1"
   gem 'cucumber'
   gem 'cucumber-rails'
+  gem 'capybara'
 end

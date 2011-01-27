@@ -11,6 +11,12 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /create timesheet page/
+      new_timesheet_path
+
+    when /^(.*)'s listing days page$/
+      "/timesheets/#{Timesheet.find_by_owner($1).id}/days"
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
