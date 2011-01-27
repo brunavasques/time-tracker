@@ -20,6 +20,9 @@ module NavigationHelpers
     when /^(.*)'s listing days page$/
       "/timesheets/#{Timesheet.find_by_owner($1).id}/days"
 
+    when /new day on (.*)'s page/
+      "/timesheets/#{Timesheet.find_by_owner($1).id}/days/new"
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

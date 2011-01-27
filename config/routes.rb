@@ -1,5 +1,7 @@
 TimeTracker::Application.routes.draw do
-  resources :timesheets
+  resources :timesheets do
+    resources :days
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
