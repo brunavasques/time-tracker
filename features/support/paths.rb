@@ -14,6 +14,9 @@ module NavigationHelpers
     when /create timesheet page/
       new_timesheet_path
 
+    when /list timesheets page/
+      timesheets_path
+
     when /^(.*)'s listing days page$/
       "/timesheets/#{Timesheet.find_by_owner($1).id}/days"
 

@@ -34,4 +34,5 @@ group :development, :test do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'capybara'
+  gem "ruby-debug19", :require => 'ruby-debug'
 end

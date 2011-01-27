@@ -3,6 +3,10 @@ class TimesheetsController < ApplicationController
     @timesheet = Timesheet.new
   end
 
+  def index
+    @timesheets = Timesheet.all
+  end
+
   def create
     @timesheet = Timesheet.new(params[:timesheet])
 
