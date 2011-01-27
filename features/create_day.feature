@@ -5,3 +5,11 @@ Feature: Create day
     When I follow "New day"
     Then I should be on starting a new day on Bruna's page
     And I should see "Start new day"
+
+  Scenario: Saving a new day
+    Given Bruna's timesheet
+    And I am on starting a new day on Bruna's page
+    When I fill in "arrival" with "26-01-2011 10:00"
+    And I fill in "departure" with "26-01-2011 19:00"
+    And press "Save"
+    Then I should be on day "26-01-2011" on Bruna's timesheet

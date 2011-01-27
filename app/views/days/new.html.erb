@@ -1,1 +1,9 @@
 <h1>Start new day</h1>
+
+<%= form_for([@timesheet, @day]) do |form| %>
+    <%= form.label :arrival%>
+    <%= form.text_field :arrival %>
+    <%= form.label :departure %>
+    <%= form.text_field :departure %>
+    <%= form.submit "Save" %>
+<% end %>
