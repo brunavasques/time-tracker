@@ -3,6 +3,11 @@ class TimesheetsController < ApplicationController
     @timesheet = Timesheet.new
   end
 
+  def show
+    @timesheet = Timesheet.find(params[:id])
+    redirect_to "/timesheets/#{@timesheet.id}/days"
+  end
+
   def index
     @timesheets = Timesheet.all
   end

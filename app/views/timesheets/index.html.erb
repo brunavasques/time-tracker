@@ -10,7 +10,7 @@
   <% @timesheets.each do |timesheet| %>
     <tr>
       <td><%=h timesheet.owner %></td>
-      <td><%= link_to 'Show', timesheet %></td>
+      <td><%= link_to 'Show', timesheet, :id => "show_#{timesheet.owner}" %></td>
       <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
       <td><%= link_to 'Delete', timesheet, :confirm => 'Are you sure?', :method => :delete, :id => "delete_#{timesheet.owner}" %></td>
     </tr>

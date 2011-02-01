@@ -1,4 +1,4 @@
-Feature: List all timesheets
+Feature: List all days
   Scenario: No days have been created yet
     Given Bruna's timesheet
     And I am on Bruna's listing days page
