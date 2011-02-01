@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Arrival</th>
+    <th>Departure</th>
+    <th>Total worked time</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <tr>
+    <td id="arrival"><%=h @day.arrival %></td>
+    <td><%=h @day.departure %></td>
+    <td><%=h @day.total_worked_time %></td>
+  </tr>
+</table>
+
+<%= link_to "New day", new_timesheet_day_path %>

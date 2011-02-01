@@ -1,7 +1,6 @@
 <table>
   <tr>
     <th>Arrival</th>
-    <th>Departure</th>
     <th>Show</th>
     <th>Edit</th>
     <th>Delete</th>
@@ -10,8 +9,8 @@
 <% unless @days.empty? %>
   <% @days.each do |day| %>
     <tr>
-      <td><%=h day.arrival %></td>
-      <td><%=h day.departure %></td>
+      <td><%=h day.arrival.to_s.split(" ")[0] %></td>
+      <td><%= link_to 'Show', "/timesheets/#{params[:timesheet_id]}/days/#{day.id}", :id => "show_#{day.arrival.to_s.split(" ")[0]}" %></td>
     </tr>
   <% end %>
 <% else %>

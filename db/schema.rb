@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20110127202317) do
     t.datetime "departure"
     t.datetime "lunchtime"
     t.datetime "back_from_lunch"
-    t.string   "other"
+    t.datetime "other"
     t.integer  "timesheet_id"
     t.datetime "created_at"
     t.datetime "updated_at"

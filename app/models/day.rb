@@ -1,3 +1,45 @@
 class Day < ActiveRecord::Base
   belongs_to :timesheet
+
+  def total_worked_time
+    @total_time = departure - arrival if departure and arrival
+    @total_time=@total_time-lunch_time
+    @total_time=@total_time-other.hour*3600-other.min*60-other.sec if other
+
+    #total_worked_time = fill_with_zero(hours) + ":" + fill_with_zero(mins) + ":" + fill_with_zero(secs)
+    total_worked_time = "#{hours(@total_time)}:#{mins(@total_time)}:#{secs(@total_time)}"
+  end
+
+  def hours(time)
+    fill_with_zero((time/3600).floor)
+  end
+
+  def mins(time)
+    fill_with_zero(((time%3600)/60).floor)
+  end
+
+  def secs(time)
+    fill_with_zero(((time%3600)%60).floor)
+  end
+
+  def lunch_time
+    if lunchtime && back_from_lunch
+      return back_from_lunch - lunchtime
+    else
+      return 0
+    end
+  end
+
+  def formated_lunch_time
+    time = lunch_time
+    "#{hours(time)}:#{mins(time)}:#{secs(time)}"
+  end
+
+  def fill_with_zero(number)
+    if number > 9
+      number.to_s
+    else
+      "0"+number.to_s
+    end
+  end
 end

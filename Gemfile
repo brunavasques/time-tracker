@@ -36,4 +36,5 @@ group :development, :test do
   gem 'capybara'
   gem "ruby-debug19", :require => 'ruby-debug'
   gem "escape_utils"
+  gem 'mysql', '2.8.1'
 end

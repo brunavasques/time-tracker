@@ -24,7 +24,7 @@ module NavigationHelpers
       "/timesheets/#{Timesheet.find_by_owner($1).id}/days/new"
 
     when /^(.*)'s "(.*)" day page/
-      "/timesheets/#{Timesheet.find_by_owner($1).id}/days/#{Day.find_by_arrival($2)}"
+      "/timesheets/#{Timesheet.find_by_owner($1).id}/days/#{(Day.where(:arrival => "#{$2} 00:00".."#{$2} 23:59")).first.id}"
 
     when /^(.*)'s first day page/
       "/timesheets/#{Timesheet.find_by_owner($1).id}/days/1"
