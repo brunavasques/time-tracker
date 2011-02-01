@@ -9,3 +9,11 @@ Feature: Create a timesheet
     Given I am on create timesheet page
     When I press "Create"
     Then I should be on create timesheet page
+
+  Scenario: Try to create a timesheet with a name that already exists
+    Given Bruna's timesheet
+    And I am on create timesheet page
+    When I press "Create"
+    When I fill in "timesheet_owner" with "Bruna"
+    And I press "Create"
+    Then I should be on create timesheet page
