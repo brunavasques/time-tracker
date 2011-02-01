@@ -35,4 +35,5 @@ group :development, :test do
   gem 'cucumber-rails'
   gem 'capybara'
   gem "ruby-debug19", :require => 'ruby-debug'
+  gem "escape_utils"
 end
