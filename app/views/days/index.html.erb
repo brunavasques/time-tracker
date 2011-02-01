@@ -1,1 +1,22 @@
+<table>
+  <tr>
+    <th>Arrival</th>
+    <th>Departure</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+<% unless @days.empty? %>
+  <% @days.each do |day| %>
+    <tr>
+      <td><%=h day.arrival %></td>
+      <td><%=h day.departure %></td>
+    </tr>
+  <% end %>
+<% else %>
+  <p>No days available.</p>
+<% end %>
+</table>
+
 <%= link_to "New day", new_timesheet_day_path %>
