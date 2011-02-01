@@ -1,5 +1,23 @@
 class Day < ActiveRecord::Base
   belongs_to :timesheet
+  validates_presence_of :arrival, :departure
+
+  validate :uniqueness_of_date, :departure_cannot_be_earlier_than_arrival
+
+  def uniqueness_of_date
+    if arrival and departure
+      date = arrival.to_s.split(" ")[0]
+      unless (Day.where(:arrival => "#{date} 00:00".."#{date} 23:59")).empty?
+        errors.add(:arrival, "date must be unique")
+      end
+    end
+  end
+
+  def departure_cannot_be_earlier_than_arrival
+    if arrival and departure and departure < arrival
+      errors.add(:arrival, "must be earlier than departure")
+    end
+  end
 
   def total_worked_time
     @total_time = departure - arrival if departure and arrival

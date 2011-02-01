@@ -9,6 +9,7 @@ class DaysController < ApplicationController
 
   def create
     @day = Day.new(params[:day])
+
     if @day.save
       redirect_to :action => :index
     else
