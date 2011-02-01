@@ -1,6 +1,6 @@
 <h1>Start new day</h1>
 
-<%= form_for([@timesheet, @day]) do |form| %>
+<%= form_for [@timesheet, @day], :url => timesheet_days_path do |form| %>
     <%= form.label :arrival%>
     <%= form.text_field :arrival %>
     <%= form.label :departure %>
