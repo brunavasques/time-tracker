@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TimeTracker</title>
-  <%= stylesheet_link_tag :all %>
+  <title><%= yield :title || 'Time Tracker' %></title>
+  <%= stylesheet_link_tag 'css/application.css' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<%= yield %>
+<% if flash[:notice] or flash[:error] %>
+	<div id="message-box">
+		<p class="notice"><%= flash[:notice] %></p>
+		<p class="error"><%= flash[:error] %></p>
+
+		<div class="background"></div>
+	</div>
+<% end %>
+
+<div id="glb-doc">
+  <div id="glb-cabecalho">
+    <div class="conteudo-cabecalho">
+		  <div class="header-topo">
+		    <span class="sistema">Time Tracker</span>
+		  </div>
+
+	    <div class="header-base">
+				<%= link_to raw("#{ image_tag('spacer.gif')} Home"), timesheets_path, :class => 'home' %>
+	    </div>
+		</div>		
+  </div>
+
+  <div id="glb-corpo">
+    <div class="glb-bloco">
+      <div class="glb-grid-12">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
