@@ -1,6 +1,8 @@
 class Day < ActiveRecord::Base
   belongs_to :timesheet
   validates_presence_of :arrival, :departure
+  validates_presence_of :lunchtime, :if => "!back_from_lunch.nil?"
+  validates_presence_of :back_from_lunch, :if => "!lunchtime.nil?"
 
   validate :uniqueness_of_date, :departure_cannot_be_earlier_than_arrival
 
@@ -21,8 +23,8 @@ class Day < ActiveRecord::Base
 
   def total_worked_time
     @total_time = departure - arrival if departure and arrival
-    @total_time=@total_time-lunch_time
-    @total_time=@total_time-other.hour*3600-other.min*60-other.sec if other
+    @total_time = @total_time - lunch_time
+    @total_time = @total_time - other.hour*3600 - other.min*60 - other.sec if other
 
     #total_worked_time = fill_with_zero(hours) + ":" + fill_with_zero(mins) + ":" + fill_with_zero(secs)
     total_worked_time = "#{hours(@total_time)}:#{mins(@total_time)}:#{secs(@total_time)}"

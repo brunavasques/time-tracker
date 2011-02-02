@@ -46,3 +46,33 @@ Feature: Create day
     And I fill in "day_departure" with "26-01-2011 10:00"
     And press "Save"
     Then I should be on starting a new day on Bruna's page
+
+  Scenario: Create a new day including lunchtime
+    Given Bruna's timesheet
+    And I am on starting a new day on Bruna's page
+    When I fill in "day_arrival" with "26-01-2011 10:00"
+    And I fill in "day_departure" with "26-01-2011 19:00"
+    And I fill in "day_lunchtime" with "26-01-2011 12:00"
+    And I fill in "day_back_from_lunch" with "26-01-2011 13:00"
+    And press "Save"
+    Then I should be on Bruna's listing days page
+
+  Scenario: Try to create a new day with departure for lunch time but without back from lunch time
+    Given Bruna's timesheet
+    And I am on starting a new day on Bruna's page
+    When I fill in "day_arrival" with "26-01-2011 10:00"
+    And I fill in "day_departure" with "26-01-2011 19:00"
+    And I fill in "day_lunchtime" with "26-01-2011 12:00"
+    And press "Save"
+    Then I should be on starting a new day on Bruna's page
+
+  Scenario: Try to create a new day with arrival from lunch but without departure time for lunch
+    Given Bruna's timesheet
+    And I am on starting a new day on Bruna's page
+    When I fill in "day_arrival" with "26-01-2011 10:00"
+    And I fill in "day_departure" with "26-01-2011 19:00"
+    And I fill in "day_back_from_lunch" with "26-01-2011 13:00"
+    And press "Save"
+    Then I should be on starting a new day on Bruna's page
+
+
