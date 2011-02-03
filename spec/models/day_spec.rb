@@ -34,8 +34,8 @@ describe Day do
   end
 
   it 'should not allow lunchtime with arrival without departure time' do
-    day.departure = "10:00"
-    day.arrival = "19:00"
+    day.departure = "19:00"
+    day.arrival = "10:00"
     day.lunchtime = "12:00"
     day.save.should be_false
     day.back_from_lunch = "13:00"
@@ -43,8 +43,8 @@ describe Day do
   end
 
   it 'should not allow lunchtime with departure without arrival time' do
-    day.departure = "10:00"
-    day.arrival = "19:00"
+    day.departure = "19:00"
+    day.arrival = "10:00"
     day.back_from_lunch = "13:00"
     day.save.should be_false
     day.lunchtime = "12:00"
